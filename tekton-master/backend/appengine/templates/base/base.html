@@ -45,12 +45,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/" class="navbar-brand">Tekton</a>
+            <a href="/" class="navbar-brand">Blog Appengine</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 {% macro select_tab(tab='') %}
-                    <li {{ 'class=active' if tab=='COURSES' }}><a href="/courses">{% trans %}Courses{% endtrans %}</a></li>
+                    <li {{ 'class=active' if tab=='POSTS' }}><a href="/posts">{% trans %}Posts{% endtrans %}</a></li>
+                    <li {{ 'class=active' if tab=='CATEGORIAS' }}><a href="/categorias">{% trans %}Categorias{% endtrans %}</a></li>
                     {% if _logged_user and 'ADMIN' in _logged_user.groups %}
                         <li {{ 'class=active' if tab=='ADMIN' }}><a href="/admin">{% trans %}Admin{% endtrans %}</a></li>
                     {% endif %}
@@ -82,7 +83,8 @@
 {% block body %}{% endblock %}
 <div class="footer">
     <div class="container">
-        <p class="text-muted text-right">Tekton Full-Stack: <a target="_blank" href="https://github.com/renzon/tekton-fullstack">Git Hub</a></p>
+        <p class="pull-right"><a href="#">Voltar para topo</a></p>
+        <p>&copy; 2014 FATEC, Danilo Alves</p>
     </div>
 </div>
 </body>
