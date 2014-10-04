@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% block css %}
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css"/>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Configurações Gerais</h1>
+            <form action="{{ config_geral_path }}" method="post">
+                {{ csrf_input() }}
+                {{form_input('Titulo do Blog','blog','','')}}
+                {{form_input('Nome Completo','nome','','')}}
+                {{form_input('Alias','alias','','')}}
+                <button type="submit" class="bg-success">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

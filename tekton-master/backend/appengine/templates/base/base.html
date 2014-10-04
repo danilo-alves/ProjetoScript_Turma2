@@ -49,21 +49,23 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                {% macro select_tab(tab='') %}
-                    <li {{ 'class=active' if tab=='POSTS' }}><a href="/posts">{% trans %}Posts{% endtrans %}</a></li>
-                    <li {{ 'class=active' if tab=='CATEGORIAS' }}><a href="/categorias">{% trans %}Categorias{% endtrans %}</a></li>
-                    {% if _logged_user and 'ADMIN' in _logged_user.groups %}
-                        <li {{ 'class=active' if tab=='ADMIN' }}><a href="/admin">{% trans %}Admin{% endtrans %}</a></li>
-                    {% endif %}
-                {% endmacro %}
-                {% block tabs %}
-                    {{ select_tab() }}
-                {% endblock %}
+                {% if _logged_user %}
+                    {% macro select_tab(tab='') %}
+                        <li {{ 'class=active' if tab=='POSTS' }}><a href="/posts">{% trans %}Posts{% endtrans %}</a></li>
+                        <li {{ 'class=active' if tab=='CATEGORIAS' }}><a href="/categorias">{% trans %}Categorias{% endtrans %}</a></li>
+                        {% if _logged_user and 'ADMIN' in _logged_user.groups %}
+                            <li {{ 'class=active' if tab=='ADMIN' }}><a href="/admin">{% trans %}Admin{% endtrans %}</a></li>
+                        {% endif %}
+                    {% endmacro %}
+                    {% block tabs %}
+                        {{ select_tab() }}
+                    {% endblock %}
+                {% endif %}
             </ul>
             <div class="nav navbar-nav pull-right pad8">
                 {% if _logged_user %}
 
-                    <form class="form-inline" action="{{ _logout_path }}" method="post">
+                    <form czlass="form-inline" action="{{ _logout_path }}" method="post">
                         <div class="input-append" id="logout-div">
                             <span>{{ _logged_user.email }}</span>
                             <button class="btn btn-danger" type="submit">{% trans %}Logout{% endtrans %}</button>

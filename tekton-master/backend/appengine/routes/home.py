@@ -7,6 +7,8 @@ from gaepermission.decorator import login_not_required
 
 @login_not_required
 @no_csrf
-def index():
+def index(_handler, _logged_user):
+    if _logged_user:
+        url = r'/usuario/index/' + _logged_user.name
+        _handler.redirect(url)
     return TemplateResponse()
-
